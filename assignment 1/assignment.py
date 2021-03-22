@@ -16,6 +16,7 @@ st.write(df.columns)
 columns=df.columns
 c1=st.radio("select first column(x axis)", columns,key="1stcolumn")
 c2=st.radio("select second column(y axis)", columns,key="2ndcolumn")
+#using matplotlib
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
 
@@ -29,7 +30,10 @@ ax.set_ylabel(c2)
 
 st.write(fig)
 
-h=st.radio("select hue column", columns,key="hue")
+h=st.radio("select hue column (only categorical value can be selected i.e here \"species\")", columns,index=5,key="hue")
+#using seaborn
+fig2=plt.figure()
+ax1=fig.add_subplot(1,1,1)
 
-sns.scatterplot(x=c1, y=c2, data=df,hue=h)
-st.pyplot()
+ax1=sns.scatterplot(x=c1, y=c2, data=df,hue=h)
+st.pyplot(fig2)
